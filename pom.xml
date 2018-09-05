@@ -31,9 +31,9 @@
 		</dependency>
 
 		<dependency>
-		  <groupId>io.vertx</groupId>
-		  <artifactId>vertx-mysql-postgresql-client</artifactId>
-		  <version>3.5.3</version>
+			<groupId>io.vertx</groupId>
+			<artifactId>vertx-mysql-postgresql-client</artifactId>
+			<version>3.5.3</version>
 		</dependency>
 
 		<dependency>
@@ -42,12 +42,27 @@
 			<version>3.0.0</version>
 			<scope>test</scope>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>io.vertx</groupId>
 			<artifactId>vertx-web</artifactId>
 			<version>3.0.0</version>
 		</dependency>
+
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-agroal</artifactId>
+			<version>5.3.6.Final</version>
+			<type>pom</type>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.postgresql/postgresql -->
+		<dependency>
+			<groupId>org.postgresql</groupId>
+			<artifactId>postgresql</artifactId>
+			<version>9.4.1212</version>
+		</dependency>
+
 
 	</dependencies>
 
