@@ -44,7 +44,7 @@ public class DbUtils<T> {
                 tx.rollback();
             }
             e.printStackTrace();
-        } finally {cd
+        } finally {
             session.close();
         }
 
