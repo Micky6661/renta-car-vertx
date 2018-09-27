@@ -14,12 +14,12 @@ import io.vertx.ext.unit.junit.VertxUnitRunner;
 public class VerticleTest{
 	private Vertx vertx;
 
-	  @Before
-	  public void setUp(TestContext context) {
-	    vertx = Vertx.vertx();
-	    vertx.deployVerticle(VerticleStart.class.getName(),
-	        context.asyncAssertSuccess());
-	  }
+//	  @Before
+//	  public void setUp(TestContext context) {
+//	    vertx = Vertx.vertx();
+//	    vertx.deployVerticle(VerticleStart.class.getName(),
+//	        context.asyncAssertSuccess());
+//	  }
 
 	  @After
 	  public void tearDown(TestContext context) {

@@ -1,36 +1,36 @@
 package py.com.rentacar.service;
 
-import py.com.rentacar.models.User;
+import com.google.gson.Gson;
+import py.com.rentacar.controllers.UserController;
+import py.com.rentacar.models.Users;
 
-import java.util.ArrayList;
+import javax.ws.rs.GET;
+import javax.ws.rs.Path;
 import java.util.List;
-import java.util.Optional;
 
 /**
  * @author mmartinez
+ * @class UserService
+ * En esta clase se recibiran las peticiones realizadas desde el Front-End
+ * siempre teniendo en cuenta la ruta y el tipo de peticion realizada
  */
+@Path("/users")
 public class UserService {
-    private List<User> users = new ArrayList<>();
 
-    public UserService() {
-        users.add(new User(1, "mmartinez", "superSecret"));
-    }
+    UserController controller = new UserController();
 
-    public List<User> findAll() {
-        return users;
-    }
-
-    public Optional<User> findByUsername(String username) {
-        for (User user : users) {
-            if (user.getUsername().equals(username)) {
-                return Optional.of(user);
-            }
+    @GET
+    public String findAll() {
+        List<Users> userList;
+        String json = null;
+        try {
+            userList = controller.getUsers();
+            json = new Gson().toJson(userList);
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-        return Optional.empty();
-    }
 
-    public void create(User user) {
-        users.add(user);
+        return json;
     }
-
 }
+

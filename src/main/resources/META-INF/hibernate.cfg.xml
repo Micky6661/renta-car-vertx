@@ -5,13 +5,14 @@
 
 <hibernate-configuration>
     <session-factory>
-        <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>
-        <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
+        <!-- SQL Dialect -->
+        <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+
+        <!-- Database Connection Settings -->
+        <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/renta_car_db</property>
         <property name="hibernate.connection.username">root</property>
         <property name="hibernate.connection.password">root</property>
-        <property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/postgres/public</property>
-        <property name="connection_pool_size">1</property>
-        <property name="hbm2ddl.auto">create</property>
         <property name="show_sql">true</property>
 
         <!-- Specifying Session Context -->
@@ -19,7 +20,8 @@
             org.hibernate.context.internal.ThreadLocalSessionContext
         </property>
 
-        <mapping class="py.com.rentacar.models.User"/>
+        <!-- Mapping With Model Class Containing Annotations -->
+        <mapping class="py.com.rentacar.models.Users"/>
 
     </session-factory>
 </hibernate-configuration>

@@ -1,23 +1,34 @@
 package renta_car;
 
 import io.vertx.core.AbstractVerticle;
-import io.vertx.core.Future;
+import org.jboss.resteasy.plugins.server.vertx.VertxRequestHandler;
+import org.jboss.resteasy.plugins.server.vertx.VertxResteasyDeployment;
+import py.com.rentacar.service.UserService;
+
 
 public class VerticleStart extends AbstractVerticle {
 
-    @Override
-    public void start(Future<Void> fut) {
-        vertx.createHttpServer()
-                .requestHandler(r -> {
-                    r.response().end("<h1>La aplicacion funciona chicas" +
-                            "Vert.x 3 application</h1>");
-                })
-                .listen(8080, result -> {
-                    if (result.succeeded()) {
-                        fut.complete();
-                    } else {
-                        fut.fail(result.cause());
-                    }
-                });
+    // Convenience method so you can run it in your IDE
+    public static void main(String[] args) {
+        Runner.runExample(VerticleStart.class);
     }
+
+    @Override
+    public void start() throws Exception {
+
+        // Build the Jax-RS hello world deployment
+        VertxResteasyDeployment deployment = new VertxResteasyDeployment();
+        deployment.start();
+        deployment.getRegistry().addPerInstanceResource(UserService.class);
+
+        // Start the front end server using the Jax-RS controller
+        vertx.createHttpServer()
+                .requestHandler(new VertxRequestHandler(vertx, deployment))
+                .listen(8080, ar -> {
+                    System.out.println("Server started on " + ar.result().actualPort());
+                });
+
+    }
+
 }
+
