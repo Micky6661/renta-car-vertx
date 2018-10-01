@@ -14,7 +14,7 @@ import java.util.List;
  * En esta clase se recibiran las peticiones realizadas desde el Front-End
  * siempre teniendo en cuenta la ruta y el tipo de peticion realizada
  */
-@Path("/users")
+@Path("/api/users")
 public class UserService {
 
     UserController controller = new UserController();

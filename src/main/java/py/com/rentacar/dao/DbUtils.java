@@ -5,7 +5,6 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
-import py.com.rentacar.models.Users;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -34,7 +33,6 @@ public class DbUtils<T> {
         Session session = factory.openSession();
         Transaction tx = null;
         Integer id = null;
-
         try {
             tx = session.beginTransaction();
             id = (Integer) session.save(obj);
@@ -51,13 +49,13 @@ public class DbUtils<T> {
         return id;
     }
 
-    public List<Users> findAll() {
+    public List<T> findAll(String table) {
         Session session = factory.openSession();
-        List<Users> objList = null;
+        List<T> objList = null;
         Transaction tx = null;
         try {
             tx = session.beginTransaction();
-            objList = session.createQuery("FROM Users").list();
+            objList = session.createQuery("FROM " + table).list();
             tx.commit();
         } catch (HibernateException e) {
             if (tx != null) tx.rollback();
