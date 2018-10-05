@@ -7,7 +7,6 @@ import java.io.Serializable;
 /**
  * @author Miguel Martinez
  **/
-
 @Entity
 @Table(name = "Users")
 public class Users implements Serializable {

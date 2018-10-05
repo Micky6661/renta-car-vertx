@@ -15,11 +15,13 @@ public class Vehiculo implements Serializable {
     @Column(name = "id")
     private Integer id;
 
-//    @Column(name = "marca_id")
-//    private Integer marcaId;
-//
-//    @Column(name = "modelo_id")
-//    private Integer modeloId;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "modelo_id", nullable = false)
+    private Modelo modelo;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "marca_id", nullable = false)
+    private Marca marca;
 
     @Column(name = "matricula")
     private String matricula;
@@ -33,14 +35,6 @@ public class Vehiculo implements Serializable {
     @Column(name = "observacion")
     private String observacion;
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "modelo_id", nullable = false)
-    private Modelo modelo;
-
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "marca_id", nullable = false)
-    private Marca marca;
-
     public Vehiculo() {
     }
 
@@ -51,22 +45,6 @@ public class Vehiculo implements Serializable {
     public void setId(Integer id) {
         this.id = id;
     }
-
-//    public Integer getMarcaId() {
-//        return marcaId;
-//    }
-//
-//    public void setMarcaId(Integer marcaId) {
-//        this.marcaId = marcaId;
-//    }
-//
-//    public Integer getModeloId() {
-//        return modeloId;
-//    }
-//
-//    public void setModeloId(Integer modeloId) {
-//        this.modeloId = modeloId;
-//    }
 
     public String getMatricula() {
         return matricula;
@@ -114,5 +92,18 @@ public class Vehiculo implements Serializable {
 
     public void setMarca(Marca marca) {
         this.marca = marca;
+    }
+
+    @Override
+    public String toString() {
+        return "Vehiculo{" +
+                "id=" + id +
+                ", modelo=" + modelo +
+                ", marca=" + marca +
+                ", matricula='" + matricula + '\'' +
+                ", chasis='" + chasis + '\'' +
+                ", motor='" + motor + '\'' +
+                ", observacion='" + observacion + '\'' +
+                '}';
     }
 }

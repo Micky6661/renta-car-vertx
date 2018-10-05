@@ -18,4 +18,23 @@ public class VehiculoDAO extends DbUtils<Vehiculo> {
 
         return vehiculoList;
     }
+
+    public Vehiculo getVehiculoById(Integer id) {
+        Vehiculo vehiculo = null;
+        try {
+            vehiculo = this.findById(Vehiculo.class, id);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return vehiculo;
+    }
+
+    public void deleteVehiculo(Integer id) {
+        try {
+            this.delete(Vehiculo.class, id);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }

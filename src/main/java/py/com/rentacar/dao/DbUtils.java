@@ -16,7 +16,6 @@ public class DbUtils<T> {
     public static SessionFactory factory;
     public EntityManagerFactory entityManagerFactory;
     public EntityManager manager;
-    Class<T> aClass;
 
     public DbUtils() {
         try {
@@ -67,12 +66,30 @@ public class DbUtils<T> {
         return objList;
     }
 
+    public T findById(Class<T> aClass, Integer id) {
+        Session session = factory.openSession();
+        T obj = null;
+        Transaction tx = null;
+        try {
+            tx = session.beginTransaction();
+            obj = (T) session.get(aClass, id);
+            tx.commit();
+        } catch (HibernateException e) {
+            if (tx != null) tx.rollback();
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+
+        return obj;
+    }
+
     public void update(T obj, Integer id) {
         Session session = factory.openSession();
         Transaction tx = null;
         try {
             tx = session.beginTransaction();
-            session.update(obj);
+            session.update(String.valueOf(id), obj);
             tx.commit();
         } catch (HibernateException e) {
             if (tx != null) tx.rollback();
@@ -82,10 +99,9 @@ public class DbUtils<T> {
         }
     }
 
-    public void delete(Integer id) {
+    public void delete(Class<T> aClass, Integer id) {
         Session session = factory.openSession();
         Transaction tx = null;
-
         try {
             tx = session.beginTransaction();
             T obj = (T) session.get(aClass, id);

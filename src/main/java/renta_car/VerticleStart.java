@@ -29,7 +29,6 @@ public class VerticleStart extends AbstractVerticle {
                 .listen(8080, ar -> {
                     System.out.println("Server started on " + ar.result().actualPort());
                 });
-
     }
 
 }
