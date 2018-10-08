@@ -2,7 +2,7 @@ package py.com.rentacar.service;
 
 import com.google.gson.Gson;
 import py.com.rentacar.controllers.VehiculoController;
-import py.com.rentacar.models.Vehiculo;
+import py.com.rentacar.models.Vehiculo.Vehiculo;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
@@ -13,7 +13,7 @@ import java.util.List;
  * Servicio REST para la Vehiculos
  *
  * @Api /api/vehiculos
- * @ResponseUtils - utilizado para el mensaje de las respuestas
+ * @ResponseUtils - utilizado para el manejo de las respuestas
  */
 
 @Path("/api/vehiculos")

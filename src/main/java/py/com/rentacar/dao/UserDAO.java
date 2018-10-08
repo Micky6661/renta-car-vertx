@@ -19,4 +19,23 @@ public class UserDAO extends DbUtils<Users> {
         return userList;
     }
 
+    public Users getUserById(int id) {
+        Users user = null;
+        try {
+            user = this.findById(Users.class, id);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return user;
+    }
+
+    public void deleteUser(int id) {
+        try {
+            this.delete(Users.class, id);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
 }

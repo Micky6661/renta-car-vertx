@@ -1,4 +1,4 @@
-package py.com.rentacar.models;
+package py.com.rentacar.models.Vehiculo;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -32,6 +32,9 @@ public class Vehiculo implements Serializable {
     @Column(name = "motor")
     private String motor;
 
+    @Column(name = "disponible")
+    private Boolean disponible;
+
     @Column(name = "observacion")
     private String observacion;
 
@@ -44,6 +47,22 @@ public class Vehiculo implements Serializable {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public Modelo getModelo() {
+        return modelo;
+    }
+
+    public void setModelo(Modelo modelo) {
+        this.modelo = modelo;
+    }
+
+    public Marca getMarca() {
+        return marca;
+    }
+
+    public void setMarca(Marca marca) {
+        this.marca = marca;
     }
 
     public String getMatricula() {
@@ -70,40 +89,19 @@ public class Vehiculo implements Serializable {
         this.motor = motor;
     }
 
+    public Boolean getDisponible() {
+        return disponible;
+    }
+
+    public void setDisponible(Boolean disponible) {
+        this.disponible = disponible;
+    }
+
     public String getObservacion() {
         return observacion;
     }
 
     public void setObservacion(String observacion) {
         this.observacion = observacion;
-    }
-
-    public Modelo getModelo() {
-        return modelo;
-    }
-
-    public void setModelo(Modelo modelo) {
-        this.modelo = modelo;
-    }
-
-    public Marca getMarca() {
-        return marca;
-    }
-
-    public void setMarca(Marca marca) {
-        this.marca = marca;
-    }
-
-    @Override
-    public String toString() {
-        return "Vehiculo{" +
-                "id=" + id +
-                ", modelo=" + modelo +
-                ", marca=" + marca +
-                ", matricula='" + matricula + '\'' +
-                ", chasis='" + chasis + '\'' +
-                ", motor='" + motor + '\'' +
-                ", observacion='" + observacion + '\'' +
-                '}';
     }
 }

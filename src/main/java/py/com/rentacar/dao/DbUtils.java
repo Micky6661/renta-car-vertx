@@ -1,9 +1,6 @@
 package py.com.rentacar.dao;
 
-import org.hibernate.HibernateException;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
+import org.hibernate.*;
 import org.hibernate.cfg.Configuration;
 
 import javax.persistence.EntityManager;
@@ -113,5 +110,31 @@ public class DbUtils<T> {
         } finally {
             session.close();
         }
+    }
+
+    /*
+     * Query Especial que obtiene un Registro desde un atributo unico
+     * */
+    public List<T> getByAtribute(Class<T> aClass, String table, String param, String atribute) {
+        Session session = factory.openSession();
+        List<T> objList = null;
+        Transaction tx = null;
+        try {
+            tx = session.beginTransaction();
+            Query query = session.createSQLQuery(
+                    "select * from " + table + " s where s." + atribute + " = :param")
+                    .addEntity(aClass)
+                    .setParameter("param", param);
+
+            objList = (List<T>) query.list();
+            tx.commit();
+        } catch (HibernateException e) {
+            if (tx != null) tx.rollback();
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+
+        return objList;
     }
 }

@@ -1,6 +1,6 @@
 package py.com.rentacar.dao;
 
-import py.com.rentacar.models.Vehiculo;
+import py.com.rentacar.models.Vehiculo.Vehiculo;
 
 import java.util.List;
 

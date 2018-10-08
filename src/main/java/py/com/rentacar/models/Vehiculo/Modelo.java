@@ -1,4 +1,4 @@
-package py.com.rentacar.models;
+package py.com.rentacar.models.Vehiculo;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -17,9 +17,6 @@ public class Modelo implements Serializable {
 
     @Column(name = "descripcion")
     private String descripcion;
-
-//    @OneToMany(mappedBy = "modelo", fetch = FetchType.LAZY)
-//    private List<Vehiculo> vehiculosList;
 
     public Modelo() {
     }
@@ -40,13 +37,6 @@ public class Modelo implements Serializable {
         this.descripcion = descripcion;
     }
 
-//    public List<Vehiculo> getVehiculosList() {
-//        return vehiculosList;
-//    }
-//
-//    public void setVehiculosList(List<Vehiculo> vehiculosList) {
-//        this.vehiculosList = vehiculosList;
-//    }
 
     @Override
     public String toString() {

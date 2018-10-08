@@ -22,9 +22,9 @@
 
         <!-- Mapping With Model Class Containing Annotations -->
         <mapping class="py.com.rentacar.models.Users"/>
-        <mapping class="py.com.rentacar.models.Vehiculo"/>
-        <mapping class="py.com.rentacar.models.Marca"/>
-        <mapping class="py.com.rentacar.models.Modelo"/>
+        <mapping class="py.com.rentacar.models.Vehiculo.Vehiculo"/>
+        <mapping class="py.com.rentacar.models.Vehiculo.Marca"/>
+        <mapping class="py.com.rentacar.models.Vehiculo.Modelo"/>
 
 
     </session-factory>

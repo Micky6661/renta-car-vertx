@@ -1,8 +1,7 @@
-package py.com.rentacar.models;
+package py.com.rentacar.models.Vehiculo;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.List;
 
 /**
  * @author Miguel Martinez
@@ -18,15 +17,6 @@ public class Marca implements Serializable {
 
     @Column(name = "descripcion")
     private String descripcion;
-
-//    @OneToMany(mappedBy = "marca", fetch = FetchType.LAZY)
-//    private List<Vehiculo> vehiculosList;
-
-    public Marca(Integer id, String descripcion, List<Vehiculo> vehiculosList) {
-        this.id = id;
-        this.descripcion = descripcion;
-//        this.vehiculosList = vehiculosList;
-    }
 
     public Marca() {
     }
@@ -47,11 +37,11 @@ public class Marca implements Serializable {
         this.descripcion = descripcion;
     }
 
-//    public List<Vehiculo> getVehiculosList() {
-//        return vehiculosList;
-//    }
-//
-//    public void setVehiculosList(List<Vehiculo> vehiculosList) {
-//        this.vehiculosList = vehiculosList;
-//    }
+    @Override
+    public String toString() {
+        return "Marca{" +
+                "id=" + id +
+                ", descripcion='" + descripcion + '\'' +
+                '}';
+    }
 }
