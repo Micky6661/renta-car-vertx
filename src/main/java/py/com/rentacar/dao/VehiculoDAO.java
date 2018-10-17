@@ -4,6 +4,9 @@ import py.com.rentacar.models.Vehiculo.Vehiculo;
 
 import java.util.List;
 
+/**
+ * @author Miguel Martinez
+ **/
 public class VehiculoDAO extends DbUtils<Vehiculo> {
 
     public static final String TABLE_NAME = "Vehiculo";

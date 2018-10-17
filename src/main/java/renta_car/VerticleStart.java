@@ -3,6 +3,7 @@ package renta_car;
 import io.vertx.core.AbstractVerticle;
 import org.jboss.resteasy.plugins.server.vertx.VertxRequestHandler;
 import org.jboss.resteasy.plugins.server.vertx.VertxResteasyDeployment;
+import py.com.rentacar.service.ClienteService;
 import py.com.rentacar.service.UserService;
 import py.com.rentacar.service.VehiculoService;
 
@@ -22,6 +23,7 @@ public class VerticleStart extends AbstractVerticle {
         deployment.start();
         deployment.getRegistry().addPerInstanceResource(UserService.class);
         deployment.getRegistry().addPerInstanceResource(VehiculoService.class);
+        deployment.getRegistry().addPerInstanceResource(ClienteService.class);
 
         // Start the server using the Jax-RS controller
         vertx.createHttpServer()

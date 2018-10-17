@@ -10,6 +10,7 @@
         <class>py.com.rentacar.models.Vehiculo.Vehiculo</class>
         <class>py.com.rentacar.models.Vehiculo.Modelo</class>
         <class>py.com.rentacar.models.Vehiculo.Marca</class>
+        <class>py.com.rentacar.models.Cliente.Cliente</class>
 
         <!--<properties>-->
         <!--<property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>-->

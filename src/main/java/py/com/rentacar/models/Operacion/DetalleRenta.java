@@ -22,10 +22,10 @@ public class DetalleRenta {
     @JoinColumn(name = "vehiculo_id", nullable = false)
     private Vehiculo vehiculo;
 
-    @Column(name = "fecha_inicio_renta")
+    @Column(name = "fecha_inicio")
     private Date fechaInicioRenta;
 
-    @Column(name = "fecha_fin_renta")
+    @Column(name = "fecha_fin")
     private Date fechaFinRenta;
 
     @Column(name = "monto")

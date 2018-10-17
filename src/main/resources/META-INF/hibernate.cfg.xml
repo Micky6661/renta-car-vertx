@@ -25,6 +25,7 @@
         <mapping class="py.com.rentacar.models.Vehiculo.Vehiculo"/>
         <mapping class="py.com.rentacar.models.Vehiculo.Marca"/>
         <mapping class="py.com.rentacar.models.Vehiculo.Modelo"/>
+        <mapping class="py.com.rentacar.models.Cliente.Cliente"/>
 
 
     </session-factory>

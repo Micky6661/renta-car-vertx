@@ -8,6 +8,9 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import java.util.List;
 
+/**
+ * @author Miguel Martinez
+ **/
 public class DbUtils<T> {
 
     public static SessionFactory factory;
@@ -113,7 +116,7 @@ public class DbUtils<T> {
     }
 
     /*
-     * Query Especial que obtiene un Registro desde un atributo unico
+     * Query Especial que obtiene Registros desde un atributo
      * */
     public List<T> getByAtribute(Class<T> aClass, String table, String param, String atribute) {
         Session session = factory.openSession();
