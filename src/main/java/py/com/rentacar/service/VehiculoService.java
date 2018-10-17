@@ -83,6 +83,29 @@ public class VehiculoService extends ResponseUtils {
         return json;
     }
 
+    @GET
+    @Path("/validar/{matricula}/{chasis}")
+    public String validarVehiculo(
+            @PathParam("matricula") String matricula,
+            @PathParam("chasis") String chasis) {
+        Vehiculo vehiculoA;
+        Vehiculo vehiculoB;
+        try {
+            vehiculoA = controller.getVehiculoByMatricula(matricula);
+            vehiculoB = controller.getVehiculoByChasis(chasis);
+            if (vehiculoA != null) {
+                return new Gson().toJson(vehiculoA);
+            }
+            if (vehiculoB != null) {
+                return new Gson().toJson(vehiculoB);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return null;
+    }
+
     @POST
     public Response create(Vehiculo vehiculo) {
         try {

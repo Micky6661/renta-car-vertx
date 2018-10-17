@@ -51,4 +51,22 @@ public class VehiculoController {
         }
         return vehiculo;
     }
+
+    public Vehiculo getVehiculoByMatricula(String matricula) {
+        try {
+            return dao.getVehiculoByMatricula(matricula);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public Vehiculo getVehiculoByChasis(String chasis) {
+        try {
+            return dao.getVehiculoByChasis(chasis);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 }
