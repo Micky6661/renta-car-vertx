@@ -9,7 +9,6 @@ import py.com.rentacar.models.Vehiculo.Modelo;
 import py.com.rentacar.models.Vehiculo.Vehiculo;
 
 import javax.ws.rs.*;
-import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.util.List;
 
@@ -17,7 +16,7 @@ import java.util.List;
  * @author Miguel Martinez
  **/
 @Path("/api/vehiculos")
-@Consumes(MediaType.APPLICATION_JSON)
+//@Consumes(MediaType.APPLICATION_JSON)
 public class VehiculoService extends ResponseUtils {
 
     VehiculoController controller = new VehiculoController();

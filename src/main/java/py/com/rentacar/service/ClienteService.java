@@ -25,7 +25,6 @@ public class ClienteService extends ResponseUtils {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
         return json;
     }
 
@@ -53,7 +52,6 @@ public class ClienteService extends ResponseUtils {
             e.printStackTrace();
             Response.serverError().build();
         }
-
         return Response.status(201).entity(STATUS201).build();
     }
 

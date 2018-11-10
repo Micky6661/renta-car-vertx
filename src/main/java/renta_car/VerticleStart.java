@@ -20,10 +20,10 @@ public class VerticleStart extends AbstractVerticle {
 
         // Build the Jax-RS hello world deployment
         VertxResteasyDeployment deployment = new VertxResteasyDeployment();
-        deployment.start();
         deployment.getRegistry().addPerInstanceResource(UserService.class);
         deployment.getRegistry().addPerInstanceResource(VehiculoService.class);
         deployment.getRegistry().addPerInstanceResource(ClienteService.class);
+        deployment.start();
 
         // Start the server using the Jax-RS controller
         vertx.createHttpServer()
@@ -32,6 +32,5 @@ public class VerticleStart extends AbstractVerticle {
                     System.out.println("Server started on " + ar.result().actualPort());
                 });
     }
-
 }
 

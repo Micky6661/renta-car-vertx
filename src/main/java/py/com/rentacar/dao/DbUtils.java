@@ -42,7 +42,7 @@ public class DbUtils<T> {
             }
             e.printStackTrace();
         } finally {
-            session.close();
+            //  session.close();
         }
 
         return id;
@@ -60,7 +60,7 @@ public class DbUtils<T> {
             if (tx != null) tx.rollback();
             e.printStackTrace();
         } finally {
-            session.close();
+            // session.close();
         }
 
         return objList;
@@ -78,7 +78,7 @@ public class DbUtils<T> {
             if (tx != null) tx.rollback();
             e.printStackTrace();
         } finally {
-            session.close();
+            //session.close();
         }
 
         return obj;
@@ -95,7 +95,7 @@ public class DbUtils<T> {
             if (tx != null) tx.rollback();
             e.printStackTrace();
         } finally {
-            session.close();
+            //session.close();
         }
     }
 
@@ -111,7 +111,7 @@ public class DbUtils<T> {
             if (tx != null) tx.rollback();
             e.printStackTrace();
         } finally {
-            session.close();
+            //session.close();
         }
     }
 
@@ -135,7 +135,7 @@ public class DbUtils<T> {
             if (tx != null) tx.rollback();
             e.printStackTrace();
         } finally {
-            session.close();
+            // session.close();
         }
 
         return objList;
