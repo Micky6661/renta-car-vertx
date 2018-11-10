@@ -5,6 +5,7 @@ import py.com.rentacar.controllers.UserController;
 import py.com.rentacar.models.Users;
 
 import javax.ws.rs.*;
+import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.util.List;
 
@@ -16,7 +17,7 @@ import java.util.List;
  */
 
 @Path("/api/users")
-//@Consumes(MediaType.APPLICATION_JSON)
+@Consumes(MediaType.APPLICATION_JSON)
 public class UserService extends ResponseUtils {
 
     UserController controller = new UserController();
