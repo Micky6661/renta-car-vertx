@@ -7,6 +7,8 @@ import py.com.rentacar.service.ClienteService;
 import py.com.rentacar.service.RentaService;
 import py.com.rentacar.service.UserService;
 import py.com.rentacar.service.VehiculoService;
+import py.com.rentacar.service.MarcaService;
+import py.com.rentacar.service.ModeloService;
 
 
 public class VerticleStart extends AbstractVerticle {
@@ -25,6 +27,8 @@ public class VerticleStart extends AbstractVerticle {
         deployment.getRegistry().addPerInstanceResource(VehiculoService.class);
         deployment.getRegistry().addPerInstanceResource(ClienteService.class);
         deployment.getRegistry().addPerInstanceResource(RentaService.class);
+        deployment.getRegistry().addPerInstanceResource(MarcaService.class);
+        deployment.getRegistry().addPerInstanceResource(ModeloService.class);
         deployment.start();
 
         // Start the server using the Jax-RS controller
