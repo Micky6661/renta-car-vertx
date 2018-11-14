@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import py.com.rentacar.controllers.UserController;
 import py.com.rentacar.models.Users;
 
+import javax.inject.Inject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -20,7 +21,8 @@ import java.util.List;
 @Consumes(MediaType.APPLICATION_JSON)
 public class UserService extends ResponseUtils {
 
-    UserController controller = new UserController();
+    @Inject
+    UserController controller;
 
     @GET
     public String findAll() {

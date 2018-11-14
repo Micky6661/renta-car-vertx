@@ -3,22 +3,24 @@ package py.com.rentacar.models.Operacion;
 import py.com.rentacar.models.Vehiculo.Vehiculo;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Date;
 
 @Entity
 @Table(name = "Detalle_Renta")
-public class DetalleRenta {
+public class DetalleRenta implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Integer id;
 
-    @ManyToOne()
-    @JoinColumn(name = "renta_id", nullable = false)
-    private Renta renta;
+    //    @ManyToOne(fetch = FetchType.LAZY)
+//    @JoinColumn(name = "renta_id", nullable = false)
+    @Column(name = "renta_id")
+    private Integer rentaId;
 
-    @ManyToOne()
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "vehiculo_id", nullable = false)
     private Vehiculo vehiculo;
 
@@ -27,9 +29,6 @@ public class DetalleRenta {
 
     @Column(name = "fecha_fin")
     private Date fechaFinRenta;
-
-    @Column(name = "monto")
-    private Long monto;
 
     public DetalleRenta() {
     }
@@ -42,12 +41,12 @@ public class DetalleRenta {
         this.id = id;
     }
 
-    public Renta getRenta() {
-        return renta;
+    public Integer getRentaId() {
+        return rentaId;
     }
 
-    public void setRenta(Renta renta) {
-        this.renta = renta;
+    public void setRentaId(Integer rentaId) {
+        this.rentaId = rentaId;
     }
 
     public Vehiculo getVehiculo() {
@@ -72,13 +71,5 @@ public class DetalleRenta {
 
     public void setFechaFinRenta(Date fechaFinRenta) {
         this.fechaFinRenta = fechaFinRenta;
-    }
-
-    public Long getMonto() {
-        return monto;
-    }
-
-    public void setMonto(Long monto) {
-        this.monto = monto;
     }
 }

@@ -4,29 +4,31 @@ import py.com.rentacar.models.Cliente.Cliente;
 import py.com.rentacar.models.Users;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "Renta")
-public class Renta {
+public class Renta implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Integer id;
 
-    @ManyToOne()
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "cliente_id", nullable = false)
     private Cliente cliente;
 
     @Column(name = "fecha_operacion")
     private Date fechaOperacion;
 
-    @ManyToOne()
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "estado_id", nullable = false)
     private EstadoRenta estadoRenta;
 
-    @ManyToOne()
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "user_id", nullable = false)
     private Users users;
 
@@ -35,6 +37,10 @@ public class Renta {
 
     @Column(name = "monto_total")
     private Long montoTotal;
+
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name = "renta_id", referencedColumnName = "id")
+    private List<DetalleRenta> detalleRentaList;
 
     public Renta() {
     }
@@ -94,4 +100,13 @@ public class Renta {
     public void setMontoTotal(Long montoTotal) {
         this.montoTotal = montoTotal;
     }
+
+    public List<DetalleRenta> getDetalleRentaList() {
+        return detalleRentaList;
+    }
+
+    public void setDetalleRentaList(List<DetalleRenta> detalleRentaList) {
+        this.detalleRentaList = detalleRentaList;
+    }
+
 }

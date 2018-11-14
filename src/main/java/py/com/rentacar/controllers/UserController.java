@@ -3,11 +3,13 @@ package py.com.rentacar.controllers;
 import py.com.rentacar.dao.UserDAO;
 import py.com.rentacar.models.Users;
 
+import javax.inject.Inject;
 import java.util.List;
 
 public class UserController {
 
-    UserDAO dao = new UserDAO();
+    @Inject
+    UserDAO dao;
 
     public List<Users> getUsers() {
         try {

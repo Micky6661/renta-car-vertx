@@ -3,11 +3,13 @@ package py.com.rentacar.controllers;
 import py.com.rentacar.dao.VehiculoDAO;
 import py.com.rentacar.models.Vehiculo.Vehiculo;
 
+import javax.inject.Inject;
 import java.util.List;
 
 public class VehiculoController {
 
-    VehiculoDAO dao = new VehiculoDAO();
+    @Inject
+    VehiculoDAO dao;
 
     public List<Vehiculo> getVehiculos() {
         try {

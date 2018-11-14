@@ -35,6 +35,9 @@ public class Vehiculo implements Serializable {
     @Column(name = "disponible")
     private Boolean disponible;
 
+    @Column(name = "precio")
+    private Double precio;
+
     @Column(name = "observacion")
     private String observacion;
 
@@ -95,6 +98,14 @@ public class Vehiculo implements Serializable {
 
     public void setDisponible(Boolean disponible) {
         this.disponible = disponible;
+    }
+
+    public Double getPrecio() {
+        return precio;
+    }
+
+    public void setPrecio(Double precio) {
+        this.precio = precio;
     }
 
     public String getObservacion() {

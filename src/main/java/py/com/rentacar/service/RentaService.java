@@ -1,8 +1,7 @@
 package py.com.rentacar.service;
 
-import com.google.gson.Gson;
-import py.com.rentacar.controllers.ClienteController;
-import py.com.rentacar.models.Cliente.Cliente;
+import py.com.rentacar.controllers.RentaController;
+import py.com.rentacar.models.Operacion.Renta;
 
 import javax.inject.Inject;
 import javax.ws.rs.*;
@@ -10,58 +9,54 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.util.List;
 
-@Path("/api/clientes")
-@Consumes(MediaType.APPLICATION_JSON)
-public class ClienteService extends ResponseUtils {
+@Path("api/rentas")
+@Produces(MediaType.APPLICATION_JSON)
+public class RentaService extends ResponseUtils {
 
     @Inject
-    ClienteController controller;
+    RentaController controller;
 
     @GET
-    public String findAll() {
-        List<Cliente> clienteList;
-        String json = null;
+    public Response findAll() {
+        List<Renta> rentaList = null;
         try {
-            clienteList = controller.getClientes();
-            json = new Gson().toJson(clienteList);
+            rentaList = controller.getRentas();
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return json;
-    }
 
+        return Response.ok(rentaList).build();
+    }
 
     @GET
     @Path("/{id}")
-    public String findById(@PathParam("id") String id) {
-        Cliente cliente;
-        String json = null;
+    public Response findById(@PathParam("id") String id) {
+        Renta renta = null;
         try {
-            cliente = controller.getClienteById(id);
-            json = new Gson().toJson(cliente);
+            renta = controller.getRentasById(id);
         } catch (Exception e) {
             e.printStackTrace();
         }
-
-        return json;
+        return Response.ok(renta).build();
     }
 
     @POST
-    public Response create(Cliente cliente) {
+    public Response create(Renta renta) {
         try {
-            controller.createCliente(cliente);
+            controller.createRenta(renta);
         } catch (Exception e) {
             e.printStackTrace();
             Response.serverError().build();
         }
+
         return Response.status(201).entity(STATUS201).build();
     }
 
     @PUT
     @Path("/{id}")
-    public Response update(Cliente cliente, @PathParam("id") String id) {
+    public Response update(@PathParam("id") String id, Renta renta) {
         try {
-            controller.updateCliente(cliente, id);
+            controller.updateRenta(renta, id);
         } catch (Exception e) {
             e.printStackTrace();
             Response.status(500).entity(STATUS500).build();
@@ -74,7 +69,7 @@ public class ClienteService extends ResponseUtils {
     @Path("/{id}")
     public Response delete(@PathParam("id") String id) {
         try {
-            controller.deleteCliente(id);
+            controller.deleteRenta(id);
         } catch (Exception e) {
             e.printStackTrace();
             Response.status(500).entity(STATUS500).build();
