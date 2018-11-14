@@ -61,7 +61,7 @@ public class VehiculoService extends ResponseUtils {
         List<Marca> listaModelos = null;
         String json = null;
         try {
-            listaModelos = marcaController.findAll();
+            listaModelos = marcaController.getMarcas();
             json = new Gson().toJson(listaModelos);
         } catch (Exception e) {
             e.printStackTrace();
@@ -75,7 +75,7 @@ public class VehiculoService extends ResponseUtils {
         List<Modelo> listaModelos = null;
         String json = null;
         try {
-            listaModelos = modeloController.findAll();
+            listaModelos = modeloController.getModelos();
             json = new Gson().toJson(listaModelos);
         } catch (Exception e) {
             e.printStackTrace();

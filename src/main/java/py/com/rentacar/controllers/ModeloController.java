@@ -9,7 +9,7 @@ public class ModeloController {
 
     ModeloDAO dao = new ModeloDAO();
 
-    public List<Modelo> findAll() {
+    public List<Modelo> getModelos() {
         try {
             return dao.getModelos();
         } catch (Exception e) {
@@ -17,4 +17,39 @@ public class ModeloController {
         }
         return null;
     }
+    
+    public void createModelo(Modelo modelo) {
+        try {
+            dao.insert(modelo);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    
+    public void updateModelo(Modelo modelo, String id) {
+        try {
+            dao.update(modelo, Integer.parseInt(id));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    
+    public void deleteModelo(String id) {
+        try {
+            dao.deleteModelo(Integer.parseInt(id));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    public Modelo getModeloById(String id) {
+        Modelo modelo = null;
+        try {
+            modelo = dao.getModeloById(Integer.parseInt(id));
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return modelo;
+    }    
+    
 }
