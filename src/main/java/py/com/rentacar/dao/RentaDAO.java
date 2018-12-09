@@ -1,5 +1,6 @@
 package py.com.rentacar.dao;
 
+import py.com.rentacar.models.Operacion.EstadoRenta;
 import py.com.rentacar.models.Operacion.Renta;
 
 import java.util.List;
@@ -22,7 +23,7 @@ public class RentaDAO extends DbUtils<Renta> {
     public Renta getRentaById(int id) {
         Renta renta = null;
         try {
-            renta = this.findById(Renta.class, id);
+            renta = this.getByAtribute(Renta.class, "Renta", String.valueOf(id), "id").get(0);
         } catch (Exception e) {
             e.printStackTrace();
         }

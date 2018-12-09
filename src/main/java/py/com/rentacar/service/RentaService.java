@@ -1,7 +1,10 @@
 package py.com.rentacar.service;
 
+import py.com.rentacar.controllers.EstadoRentaController;
 import py.com.rentacar.controllers.RentaController;
+import py.com.rentacar.models.Operacion.EstadoRenta;
 import py.com.rentacar.models.Operacion.Renta;
+import py.com.rentacar.models.Operacion.RentaDTO;
 
 import javax.inject.Inject;
 import javax.ws.rs.*;
@@ -15,6 +18,9 @@ public class RentaService extends ResponseUtils {
 
     @Inject
     RentaController controller;
+
+    @Inject
+    EstadoRentaController estadoRentaController;
 
     @GET
     public Response findAll() {
@@ -41,7 +47,7 @@ public class RentaService extends ResponseUtils {
     }
 
     @POST
-    public Response create(Renta renta) {
+    public Response create(RentaDTO renta) {
         try {
             controller.createRenta(renta);
         } catch (Exception e) {
@@ -53,10 +59,9 @@ public class RentaService extends ResponseUtils {
     }
 
     @PUT
-    @Path("/{id}")
-    public Response update(@PathParam("id") String id, Renta renta) {
+    public Response update(RentaDTO renta) {
         try {
-            controller.updateRenta(renta, id);
+            controller.updateRenta(renta);
         } catch (Exception e) {
             e.printStackTrace();
             Response.status(500).entity(STATUS500).build();
@@ -72,9 +77,23 @@ public class RentaService extends ResponseUtils {
             controller.deleteRenta(id);
         } catch (Exception e) {
             e.printStackTrace();
-            Response.status(500).entity(STATUS500).build();
+            return Response.status(500).entity(STATUS500).build();
         }
 
         return Response.status(202).entity(STATUS202).build();
     }
+
+    @GET
+    @Path("/estados")
+    public Response getEstadosRentas() {
+        List<EstadoRenta> estadoRentas;
+        try {
+            estadoRentas = estadoRentaController.getEstadosRenta();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return Response.status(500).build();
+        }
+        return Response.ok(estadoRentas).build();
+    }
+
 }
