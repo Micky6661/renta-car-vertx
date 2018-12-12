@@ -1,13 +1,14 @@
 package py.com.rentacar.models.Operacion;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 /**
  * @author Miguel Martinez
  **/
 @Entity
 @Table(name = "Estado_Renta")
-public class EstadoRenta {
+public class EstadoRenta implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

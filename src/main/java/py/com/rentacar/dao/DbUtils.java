@@ -13,6 +13,9 @@ import java.util.List;
  **/
 public class DbUtils<T> {
 
+  /*  @Inject
+    Logger logger;*/
+
     public static SessionFactory factory;
     public EntityManagerFactory entityManagerFactory;
     public EntityManager manager;
@@ -23,8 +26,9 @@ public class DbUtils<T> {
             entityManagerFactory = Persistence.createEntityManagerFactory("rentacarData");
             manager = entityManagerFactory.createEntityManager();
         } catch (Throwable ex) {
-            System.err.println("No se ha podido crear SessionFactory" + ex);
-            throw new ExceptionInInitializerError(ex);
+            // logger.error("No se ha podido crear SessionFactory. " + ex);
+            ex.printStackTrace();
+//            throw new Exception();
         }
     }
 
@@ -51,34 +55,25 @@ public class DbUtils<T> {
     public List<T> findAll(String table) {
         Session session = factory.openSession();
         List<T> objList = null;
-        Transaction tx = null;
         try {
-            tx = session.beginTransaction();
             objList = session.createQuery("FROM " + table).list();
-            tx.commit();
         } catch (HibernateException e) {
-            if (tx != null) tx.rollback();
             e.printStackTrace();
         } finally {
             // session.close();
         }
 
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            return objList;
+        return objList;
     }
 
     public T findById(Class<T> aClass, Integer id) {
         Session session = factory.openSession();
         T obj = null;
-        Transaction tx = null;
         try {
-            tx = session.beginTransaction();
             obj = (T) session.get(aClass, id);
-            tx.commit();
         } catch (HibernateException e) {
-            if (tx != null) tx.rollback();
             e.printStackTrace();
         } finally {
-            //session.close();
         }
 
         return obj;
