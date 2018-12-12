@@ -3,12 +3,7 @@ package renta_car;
 import io.vertx.core.AbstractVerticle;
 import org.jboss.resteasy.plugins.server.vertx.VertxRequestHandler;
 import org.jboss.resteasy.plugins.server.vertx.VertxResteasyDeployment;
-import py.com.rentacar.service.ClienteService;
-import py.com.rentacar.service.RentaService;
-import py.com.rentacar.service.UserService;
-import py.com.rentacar.service.VehiculoService;
-import py.com.rentacar.service.MarcaService;
-import py.com.rentacar.service.ModeloService;
+import py.com.rentacar.service.*;
 
 
 public class VerticleStart extends AbstractVerticle {
